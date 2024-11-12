@@ -1,0 +1,24 @@
+ [
+    {
+      "p": "colorclaim",
+      "op": "claim",
+      "rgb": "255 128 0",
+      "hex": "#FF8000",
+      "name": "Digital Orange"
+    },
+    {
+      "p": "colorclaim",
+      "op": "claim",
+      "rgb": "128 0 128",
+      "hex": "#800080",
+      "name": "Rich Purple"
+    },
+    {
+      "p": "colorclaim",
+      "op": "claim",
+      "rgb": "0 128 128",
+      "hex": "#008080",
+      "name": "Deep Teal"
+    }
+  ]
+  

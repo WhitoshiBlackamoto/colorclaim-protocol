@@ -1,0 +1,27 @@
+    {
+      "p": "colorclaim",
+      "op": "claim",
+      "rgb": "255 0 0",
+      "hex": "#FF0000",
+      "name": "Pure Red"
+    },
+    {
+      "p": "colorclaim",
+      "op": "claim",
+      "rgb": "0 255 0",
+      "hex": "#00FF00",
+      "name": "Pure Green"
+    },
+    {
+      "p": "colorclaim",
+      "op": "claim",
+      "rgb": "0 0 255",
+      "hex": "#0000FF",
+      "name": "Pure Blue"
+    }
+  ]
+  
+ 
+  
+  
+ 

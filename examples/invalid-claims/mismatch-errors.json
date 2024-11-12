@@ -1,0 +1,23 @@
+[
+    {
+      "p": "colorclaim",
+      "op": "claim",
+      "rgb": "255 0 0",
+      "hex": "#00FF00",    // Doesn't match RGB
+      "name": "Mismatched Color"
+    },
+    {
+      "p": "colorclaim",
+      "op": "claim",
+      "rgb": "255 0 0",
+      "hex": "FF0000",     // Missing # prefix
+      "name": "Wrong Format"
+    },
+    {
+      "p": "colorclaim",
+      "op": "claim",
+      "rgb": "255 0 0",
+      "hex": "#FF0000",
+      "name": ""          // Empty name
+    }
+  ]
