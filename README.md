@@ -26,15 +26,17 @@ Our mission is to create an open, global registry of color names on Bitcoin. We 
 - Maintaining global accessibility
 - Ensuring complete transparency
 - Enabling name transferability
-- Supporting cultural evolution through future naming capabilities
+- Supporting cultural evolution through renaming capabilities
 
 ## Status
 
-This protocol is currently in DRAFT status and open for community feedback.
+This protocol is Version 1.0.0 and is live on Bitcoin mainnet. While the core protocol is now stable, we welcome community feedback for future improvements.
 
-# ColorClaim Protocol
+## Technical Requirements
 
-[Previous manifesto and overview sections remain unchanged...]
+- Each color claim must be created on a UTXO with a minimum of 600 satoshis
+- This ensures the UTXO can support future rename operations
+- Prevents issues with Bitcoin's dust limit (546 satoshis)
 
 ## Protocol Operations
 
@@ -46,22 +48,28 @@ The initial claiming of a color name:
   "op": "claim",
   "rgb": "255 128 0",
   "hex": "#FF8000",
-  "name": "Digital Orange"
+  "name": "Digital Orange 🌅"
 }
 ```
 
 ### 2. Color Rename
-Changing the name of a previously claimed color:
+Changing the name of a previously claimed color. Must be inscribed to the same UTXO that contains the original color claim:
 ```json
 {
   "p": "colorclaim",
   "op": "rename",
-  "inscription_id": "6037f433df77001a36f3f929a48d0459b03686efab9a91d6ecf90258e4b943f3i0", // Original claim inscription ID
-  "name": "Vibrant Orange" // New name for the color
+  "inscription_id": "6037f433df77001a36f3f929a48d0459b03686efab9a91d6ecf90258e4b943f3i0",
+  "name": "Vibrant Orange 🔥"
 }
 ```
 
 ## Protocol Design
+
+### Rename Operation Design
+- Rename inscriptions must be added to the same UTXO that contains the original color claim
+- This ensures only the current owner can perform renames
+- No additional ownership verification needed
+- Automatic enforcement through Bitcoin network rules
 
 ### Inscription IDs in Rename Operations
 The rename operation uses the inscription ID rather than RGB/HEX values because:
@@ -78,23 +86,32 @@ The rename operation uses the inscription ID rather than RGB/HEX values because:
 - HEX must be 6 hex digits with # prefix
 - RGB and HEX must represent the same color
 - Name must be 1-64 characters
+- Can contain any Unicode characters including emojis
 - Colors are case-insensitive (#FF8000 = #ff8000)
-- Names are case-insensitive ("Digital Orange" = "digital orange")
+- Names are case-insensitive
 - First valid claim wins for each color
 - First valid claim wins for each name (compared case-insensitively)
 
 #### For Renames
 - Must reference a valid existing claim inscription_id
-- New name must follow same character rules (1-64 chars)
+- Must be inscribed to the same UTXO as the original claim
+- New name must follow same character rules (1-64 chars, Unicode/emoji support)
 - Names are case-insensitive
 - Cannot rename to an existing name (compared case-insensitively)
-- Only the current owner of the referenced inscription can rename
 
 ### Name Comparison Rules
 - All name comparisons are done after converting to lowercase
 - Whitespace at start and end is trimmed
 - Multiple consecutive whitespace characters are collapsed to single space
 - Example: "Digital  Orange" = "digital orange" = "  Digital Orange  "
+
+### Valid Name Examples
+```json
+{"name": "Sunset Orange 🌅"}
+{"name": "Deep Blue 🌊"}
+{"name": "🌸 Cherry Blossom Pink"}
+{"name": "🎨"}
+```
 
 ## Indexing Requirements
 
@@ -106,6 +123,7 @@ Indexers must track:
 2. Current state
    - Current ownership
    - Current names (stored with original casing but compared case-insensitively)
+   - UTXO containing the inscription
 3. Historical data
    - Name history (preserving original casing)
    - Ownership transfers

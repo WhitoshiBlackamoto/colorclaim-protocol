@@ -1,23 +1,93 @@
 [
-    {
-      "p": "colorclaim",
-      "op": "claim",
-      "rgb": "255,0,0",    // Wrong separator
-      "hex": "#FF0000",
-      "name": "Invalid Red"
-    },
-    {
-      "p": "colorclaim",
-      "op": "claim",
-      "rgb": "255 0",      // Missing value
-      "hex": "#FF0000",
-      "name": "Incomplete Color"
-    },
-    {
-      "p": "colorclaim",
-      "op": "claim",
-      "rgb": "256 0 0",    // Value > 255
-      "hex": "#FF0000",
-      "name": "Out of Range"
-    }
-  ]
+  {
+    "p": "colorclaim",
+    "op": "claim",
+    "rgb": "255,0,0",    // Wrong separator
+    "hex": "#FF0000",
+    "name": "Invalid Red"
+  },
+  {
+    "p": "colorclaim",
+    "op": "claim",
+    "rgb": "255 0",      // Missing value
+    "hex": "#FF0000",
+    "name": "Incomplete Color"
+  },
+  {
+    "p": "colorclaim",
+    "op": "claim",
+    "rgb": "256 0 0",    // Value > 255
+    "hex": "#FF0000",
+    "name": "Out of Range"
+  },
+  {
+    "p": "colorclaim", 
+    "op": "claim",      
+    "rgb": "-1 0 0",     // Negative value
+    "hex": "#FF0000",
+    "name": "Negative Color"
+  },
+  {
+    "p": "colorclaim",
+    "op": "claim",
+    "rgb": "255  0  0",  // Multiple spaces
+    "hex": "#FF0000",
+    "name": "Extra Spaces"
+  },
+  {
+    "p": "COLORCLAIM",   // Wrong protocol name casing
+    "op": "claim",
+    "rgb": "255 0 0",
+    "hex": "#FF0000",
+    "name": "Wrong Protocol"
+  },
+  {
+    "p": "colorclaim",
+    "op": "CLAIM",       // Wrong operation casing
+    "rgb": "255 0 0",
+    "hex": "#FF0000",
+    "name": "Wrong Operation"
+  }
+  {
+    "p": "colorclaim",
+    "op": "rename",
+    "name": "New Name"     // Missing inscription_id
+  },
+  {
+    "p": "colorclaim",
+    "op": "rename",
+    "inscription_id": "invalid_inscription_id",  // Invalid inscription ID format
+    "name": "New Name"
+  },
+  {
+    "p": "colorclaim",
+    "op": "rename",
+    "inscription_id": "6037f433df77001a36f3f929a48d0459b03686efab9a91d6ecf90258e4b943f3i0",
+    "name": ""            // Empty name
+  },
+  {
+    "p": "colorclaim",
+    "op": "rename",
+    "inscription_id": "6037f433df77001a36f3f929a48d0459b03686efab9a91d6ecf90258e4b943f3i0",
+    "name": "A very long name that exceeds the sixty-four character limit set by the protocol specification"  // Too long name
+  },
+  {
+    "p": "colorclaim",
+    "op": "rename",
+    "inscription_id": "6037f433df77001a36f3f929a48d0459b03686efab9a91d6ecf90258e4b943f3i0",
+    "rgb": "255 0 0",     // Invalid field for rename operation
+    "hex": "#FF0000",     // Invalid field for rename operation
+    "name": "New Name"
+  },
+  {
+    "p": "colorclaim",
+    "op": "rename",
+    "inscription_id": "6037f433df77001a36f3f929a48d0459b03686efab9a91d6ecf90258e4b943f3i0"  // Missing name
+  },
+  {
+    "p": "colorclaim",
+    "op": "RENAME",      // Wrong operation casing
+    "inscription_id": "6037f433df77001a36f3f929a48d0459b03686efab9a91d6ecf90258e4b943f3i0",
+    "name": "New Name"
+  }
+]

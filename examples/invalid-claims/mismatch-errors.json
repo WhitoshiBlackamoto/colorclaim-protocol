@@ -1,23 +1,51 @@
 [
-    {
-      "p": "colorclaim",
-      "op": "claim",
-      "rgb": "255 0 0",
-      "hex": "#00FF00",    // Doesn't match RGB
-      "name": "Mismatched Color"
-    },
-    {
-      "p": "colorclaim",
-      "op": "claim",
-      "rgb": "255 0 0",
-      "hex": "FF0000",     // Missing # prefix
-      "name": "Wrong Format"
-    },
-    {
-      "p": "colorclaim",
-      "op": "claim",
-      "rgb": "255 0 0",
-      "hex": "#FF0000",
-      "name": ""          // Empty name
-    }
-  ]
+  {
+    "p": "colorclaim",
+    "op": "claim",
+    "rgb": "255 0 0",
+    "hex": "#00FF00",    // Doesn't match RGB
+    "name": "Mismatched Color"
+  },
+  {
+    "p": "colorclaim",
+    "op": "claim",
+    "rgb": "255 0 0",
+    "hex": "FF0000",     // Missing # prefix
+    "name": "Wrong Format"
+  },
+  {
+    "p": "colorclaim",
+    "op": "claim",
+    "rgb": "255 0 0",
+    "hex": "#FF0000",
+    "name": ""          // Empty name
+  },
+  {
+    "p": "colorclaim",
+    "op": "claim",
+    "rgb": "255 0 0",
+    "hex": "#FF0000G",   // Invalid hex character
+    "name": "Bad Hex"
+  },
+  {
+    "p": "colorclaim",
+    "op": "claim",
+    "rgb": "255 0 0",
+    "hex": "#FF00",      // Too short hex
+    "name": "Short Hex"
+  },
+  {
+    "p": "colorclaim",
+    "op": "rename",      // Wrong operation for new color
+    "rgb": "255 0 0",
+    "hex": "#FF0000",
+    "name": "Wrong Op"
+  },
+  {
+    "p": "colorclaim",
+    "op": "claim",
+    "rgb": "255 0 0",
+    "hex": "#FF0000",
+    "name": "A very long name that exceeds the sixty-four character limit set by the protocol spec"  // Too long
+  }
+]
